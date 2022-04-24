@@ -1,9 +1,10 @@
 import React from 'react';
+import BillForm from './components/BillForm.jsx';
 
 export default function App() {
   return (
-    <div>
-      This is App.jsx
+    <div className="container">
+      <BillForm />
     </div>
   );
 }
