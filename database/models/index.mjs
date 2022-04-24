@@ -1,6 +1,7 @@
 import { Sequelize } from 'sequelize';
 import url from 'url';
 import allConfig from '../config/config.js';
+import initBillModel from './bill.mjs';
 
 const env = process.env.NODE_ENV || 'development';
 
@@ -29,6 +30,8 @@ if (env === 'production') {
 } else {
   sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
+
+db.Bill = initBillModel(sequelize, Sequelize.DataTypes);
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
