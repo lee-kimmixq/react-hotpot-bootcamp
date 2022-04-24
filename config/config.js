@@ -5,6 +5,7 @@ module.exports = {
     database: 'hotpot_development',
     host: '127.0.0.1',
     dialect: 'postgres',
+    seederStorage: 'sequelize',
   },
   production: {
     use_env_variable: 'DATABASE_URL',
