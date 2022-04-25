@@ -1,18 +1,13 @@
 import React, { useState } from 'react';
-import BillForm from './components/BillForm.jsx';
-import BillList from './components/BillList.jsx';
+
+import BillMain from './containers/BillMain.jsx';
 
 export default function App() {
   const [currentBill, setCurrentBill] = useState();
 
   return (
     <div className="container">
-      {!currentBill && (
-      <div>
-        <BillForm setCurrentBill={setCurrentBill} />
-        <BillList setCurrentBill={setCurrentBill} />
-      </div>
-      )}
+      {!currentBill && <BillMain setCurrentBill={setCurrentBill} />}
       {currentBill && (
       <button
         type="button"
