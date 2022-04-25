@@ -10,7 +10,17 @@ export default function initBillsController(db) {
     }
   };
 
+  const getAllBills = async (req, res) => {
+    try {
+      const bills = await db.Bill.findAll();
+      if (!bills) throw new Error('cannot find bills');
+      res.send({ bills });
+    } catch (err) {
+      res.status(500).send(err);
+    }
+  };
+
   return {
-    postBill,
+    postBill, getAllBills,
   };
 }
