@@ -7,6 +7,7 @@ export default function routes(app) {
   const BillsController = initBillsController(db);
   app.post('/bill', BillsController.postBill);
   app.get('/bills', BillsController.getAllBills);
+  app.get('/bill/:id', BillsController.getBillFromId);
 
   // Root route renders Webpack-generated main.html file
   app.get('/', (request, response) => {

@@ -20,7 +20,17 @@ export default function initBillsController(db) {
     }
   };
 
+  const getBillFromId = async (req, res) => {
+    try {
+      const bill = await db.Bill.findByPk(req.params.id);
+      if (!bill) throw new Error('cannot find bill with id');
+      res.send({ bill });
+    } catch (err) {
+      res.status(500).send(err);
+    }
+  };
+
   return {
-    postBill, getAllBills,
+    postBill, getAllBills, getBillFromId,
   };
 }
