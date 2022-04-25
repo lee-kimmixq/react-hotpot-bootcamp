@@ -4,12 +4,13 @@ import BillMain from './containers/BillMain.jsx';
 import ItemMain from './containers/ItemMain.jsx';
 
 export default function App() {
-  const [currentBill, setCurrentBill] = useState();
+  const [currentBillId, setCurrentBillId] = useState();
 
   return (
     <div className="container">
-      {!currentBill && <BillMain setCurrentBill={setCurrentBill} />}
-      {currentBill && <ItemMain setCurrentBill={setCurrentBill} />}
+      {!currentBillId && <BillMain setCurrentBillId={setCurrentBillId} />}
+      {currentBillId
+      && <ItemMain currentBillId={currentBillId} setCurrentBillId={setCurrentBillId} />}
     </div>
   );
 }

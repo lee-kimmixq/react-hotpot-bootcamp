@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-export default function BillForm({ setCurrentBill }) {
+export default function BillForm({ setCurrentBillId }) {
   const [name, setName] = useState('');
   const [total, setTotal] = useState('');
 
@@ -20,7 +20,7 @@ export default function BillForm({ setCurrentBill }) {
       .then((res) => {
         setName('');
         setTotal('');
-        setCurrentBill(res.data.newBill.id);
+        setCurrentBillId(res.data.newBill.id);
       });
   };
 

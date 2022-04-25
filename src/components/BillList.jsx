@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-export default function BillList({ setCurrentBill }) {
+export default function BillList({ setCurrentBillId }) {
   const [billList, setBillList] = useState([]);
 
   useEffect(() => {
@@ -15,7 +15,7 @@ export default function BillList({ setCurrentBill }) {
             <button
               type="button"
               className="btn btn-primary btn-sm"
-              onClick={() => { setCurrentBill(id); }}
+              onClick={() => { setCurrentBillId(id); }}
             >
               Select
             </button>
