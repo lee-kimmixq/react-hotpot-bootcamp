@@ -2,6 +2,7 @@ import { Sequelize } from 'sequelize';
 import url from 'url';
 import allConfig from '../config/config.js';
 import initBillModel from './bill.mjs';
+import initPersonModel from './person.mjs';
 
 const env = process.env.NODE_ENV || 'development';
 
@@ -32,6 +33,10 @@ if (env === 'production') {
 }
 
 db.Bill = initBillModel(sequelize, Sequelize.DataTypes);
+db.Person = initPersonModel(sequelize, Sequelize.DataTypes);
+
+db.Person.belongsTo(db.Bill);
+db.Bill.hasMany(db.Person);
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
