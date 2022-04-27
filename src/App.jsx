@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import BillMain from './containers/BillMain.jsx';
-import ItemMain from './containers/ItemMain.jsx';
+import DetailsMain from './containers/DetailsMain.jsx';
 
 export default function App() {
   const [currentBillId, setCurrentBillId] = useState();
@@ -10,7 +10,7 @@ export default function App() {
     <div className="container">
       {!currentBillId && <BillMain setCurrentBillId={setCurrentBillId} />}
       {currentBillId
-      && <ItemMain currentBillId={currentBillId} setCurrentBillId={setCurrentBillId} />}
+      && <DetailsMain currentBillId={currentBillId} setCurrentBillId={setCurrentBillId} />}
     </div>
   );
 }
