@@ -25,6 +25,20 @@ export default function DetailsMain({ currentBillId, setCurrentBillId }) {
       });
   }, personList);
 
+  const calculateFinalAmounts = () => {
+    const newPersonList = [...personList];
+    newPersonList.map((person) => {
+      const newPerson = { ...person };
+      const itemsInvolved = items.filter(({ people }) => people.includes(newPerson.name));
+      const dividedCosts = itemsInvolved.map(({ price, people }) => price / people.length);
+      const totalCost = dividedCosts.reduce((prev, curr) => prev + curr, 0);
+      newPerson.amount = totalCost.toFixed(2);
+      return newPerson;
+    });
+    console.log(newPersonList);
+    // setPersonList(newPersonList);
+  };
+
   return (
     <div className="container">
       <button
@@ -44,7 +58,7 @@ export default function DetailsMain({ currentBillId, setCurrentBillId }) {
         {' '}
         {total}
       </h2>
-      <div className="row"><button type="button" className="btn btn-danger">Save Bill</button></div>
+      <div className="row"><button type="button" className="btn btn-danger" onClick={calculateFinalAmounts}>Calculate Bill</button></div>
     </div>
   );
 }

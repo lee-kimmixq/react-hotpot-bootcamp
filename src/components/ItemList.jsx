@@ -37,7 +37,7 @@ export default function ItemList({ items, setItems, personList }) {
           <button
             type="button"
             className="btn btn-primary btn-sm"
-            onClick={() => { console.log(currentPerson);
+            onClick={() => {
               addPersonToItem(index, currentPerson); }}
           >
             Add Person
