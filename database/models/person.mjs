@@ -15,6 +15,7 @@ export default function initPersonModel(sequelize, DataTypes) {
       amount: {
         allowNull: false,
         type: DataTypes.DECIMAL(10, 2),
+        defaultValue: 0,
       },
       billId: {
         allowNull: false,
