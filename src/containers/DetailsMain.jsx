@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+import PersonList from '../components/PersonList.jsx';
+
 export default function ItemMain({ currentBillId, setCurrentBillId }) {
   const [currentBill, setCurrentBill] = useState({});
 
@@ -25,6 +27,7 @@ export default function ItemMain({ currentBillId, setCurrentBillId }) {
         Back
       </button>
       <h1>{name}</h1>
+      <PersonList currentBillId={currentBillId} />
     </div>
   );
 }
