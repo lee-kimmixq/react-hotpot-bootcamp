@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import PersonList from '../components/PersonList.jsx';
 import PersonForm from '../components/PersonForm.jsx';
+import ItemForm from '../components/ItemForm.jsx';
 
 export default function DetailsMain({ currentBillId, setCurrentBillId }) {
   const [currentBill, setCurrentBill] = useState({});
@@ -28,6 +29,7 @@ export default function DetailsMain({ currentBillId, setCurrentBillId }) {
         Back
       </button>
       <h1>{name}</h1>
+      <ItemForm />
       <PersonForm currentBillId={currentBillId} />
       <PersonList currentBillId={currentBillId} />
     </div>
