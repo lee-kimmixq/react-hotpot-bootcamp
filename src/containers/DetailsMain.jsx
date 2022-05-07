@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import PersonList from '../components/PersonList.jsx';
 
-export default function ItemMain({ currentBillId, setCurrentBillId }) {
+export default function DetailsMain({ currentBillId, setCurrentBillId }) {
   const [currentBill, setCurrentBill] = useState({});
 
   const { name } = currentBill;
