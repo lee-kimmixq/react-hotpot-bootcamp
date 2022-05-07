@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import DetailsFormContainer from './DetailsFormContainer.jsx';
-import DetailsBillContainer from './DetailsBillContainer.jsx';
+import DetailsFormContainer from './Form/DetailsFormContainer.jsx';
+import DetailsBillContainer from './Bill/DetailsBillContainer.jsx';
 
 export default function DetailsMain({ currentBillId, setCurrentBillId }) {
   const [currentBill, setCurrentBill] = useState({});
