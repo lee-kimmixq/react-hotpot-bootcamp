@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-export default function PersonForm({ currentBillId }) {
+export default function PersonForm({ currentBillId, setPersonList }) {
   const [name, setName] = useState('');
 
   const handleNameChange = (e) => {
@@ -10,8 +10,9 @@ export default function PersonForm({ currentBillId }) {
 
   const addPersonToBill = () => {
     axios.post('/people', { name, currentBillId })
-      .then(() => {
+      .then((res) => {
         setName('');
+        setPersonList(res.data.people);
       });
   };
 

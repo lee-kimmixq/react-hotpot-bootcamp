@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function ItemForm() {
+export default function ItemForm({ items, setItems }) {
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
 
@@ -15,8 +15,15 @@ export default function ItemForm() {
   };
 
   const addItem = () => {
+    const newItem = {
+      name,
+      price,
+      people: [],
+    };
+    const currentItems = [...items, newItem];
     setName('');
     setPrice('');
+    setItems(currentItems);
   };
 
   return (

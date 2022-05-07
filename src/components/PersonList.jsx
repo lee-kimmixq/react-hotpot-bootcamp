@@ -1,32 +1,23 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React from 'react';
 
-export default function PersonList({ currentBillId }) {
-  const [personList, setPersonList] = useState([]);
-
-  useEffect(() => {
-    axios.get(`/bill/${currentBillId}/people`)
-      .then((res) => {
-        const newPersonList = res.data.people.map(({ id, name, amount }) => (
-          <li key={id}>
-            {name}
-            {' '}
-            -
-            {' '}
-            <b>
-              $
-              {amount}
-            </b>
-          </li>
-        ));
-        setPersonList(newPersonList);
-      });
-  }, []);
+export default function PersonList({ personList }) {
+  const personListJsx = personList.map(({ id, name, amount }) => (
+    <li key={id}>
+      {name}
+      {' '}
+      -
+      {' '}
+      <b>
+        $
+        {amount}
+      </b>
+    </li>
+  ));
 
   return (
     <div>
       <h3>Amount Owed Person List</h3>
-      <div><ul>{personList}</ul></div>
+      <div><ul>{personListJsx}</ul></div>
     </div>
   );
 }
