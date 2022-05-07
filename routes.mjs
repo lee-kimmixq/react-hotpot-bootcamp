@@ -13,6 +13,7 @@ export default function routes(app) {
   app.get('/bill/:id', BillsController.getBillFromId);
 
   app.get('/bill/:id/people', PeopleController.getAllPeople);
+  app.post('/people', PeopleController.postPerson);
 
   // Root route renders Webpack-generated main.html file
   app.get('/', (request, response) => {

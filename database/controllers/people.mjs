@@ -9,7 +9,18 @@ export default function initPeopleController(db) {
     }
   };
 
+  const postPerson = async (req, res) => {
+    try {
+      const { name, currentBillId } = req.body;
+      const newPerson = await db.Person.create({ name, billId: currentBillId });
+      if (!newPerson) throw new Error('new person not created');
+      res.send({ newPerson });
+    } catch (err) {
+      res.status(500).send(err);
+    }
+  };
+
   return {
-    getAllPeople,
+    getAllPeople, postPerson,
   };
 }
