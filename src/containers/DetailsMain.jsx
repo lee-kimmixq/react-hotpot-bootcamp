@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import PersonList from '../components/PersonList.jsx';
-import PersonForm from '../components/PersonForm.jsx';
-import ItemForm from '../components/ItemForm.jsx';
-import ItemList from '../components/ItemList.jsx';
+import DetailsFormContainer from './DetailsFormContainer.jsx';
+import DetailsBillContainer from './DetailsBillContainer.jsx';
 
 export default function DetailsMain({ currentBillId, setCurrentBillId }) {
   const [currentBill, setCurrentBill] = useState({});
@@ -39,10 +37,8 @@ export default function DetailsMain({ currentBillId, setCurrentBillId }) {
         Back
       </button>
       <h1>{name}</h1>
-      <ItemForm items={items} setItems={setItems} />
-      <PersonForm currentBillId={currentBillId} setPersonList={setPersonList} />
-      <ItemList items={items} setItems={setItems} personList={personList} />
-      <PersonList personList={personList} />
+      <DetailsFormContainer currentBillId={currentBillId} items={items} setItems={setItems} setPersonList={setPersonList} />
+      <DetailsBillContainer items={items} setItems={setItems} personList={personList} />
     </div>
   );
 }
