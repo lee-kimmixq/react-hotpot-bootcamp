@@ -26,17 +26,16 @@ export default function DetailsMain({ currentBillId, setCurrentBillId }) {
   }, personList);
 
   const calculateFinalAmounts = () => {
-    const newPersonList = [...personList];
-    newPersonList.map((person) => {
-      const newPerson = { ...person };
-      const itemsInvolved = items.filter(({ people }) => people.includes(newPerson.name));
+    const newPersonList = [...personList].map((person) => {
+      const itemsInvolved = items.filter(({ people }) => people.includes(person.name));
       const dividedCosts = itemsInvolved.map(({ price, people }) => price / people.length);
       const totalCost = dividedCosts.reduce((prev, curr) => prev + curr, 0);
-      newPerson.amount = totalCost.toFixed(2);
-      return newPerson;
+      return { ...person, amount: totalCost.toFixed(2) };
     });
-    console.log(newPersonList);
-    // setPersonList(newPersonList);
+    axios.put('/people', newPersonList)
+      .then((res) => {
+        setPersonList(res.data);
+      });
   };
 
   return (

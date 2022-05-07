@@ -24,7 +24,19 @@ export default function initPeopleController(db) {
     }
   };
 
+  const updateAmounts = async (req, res) => {
+    try {
+      const newPersonList = await db.Person.bulkCreate(req.body, {
+        updateOnDuplicate: ['amount'],
+      });
+      if (!newPersonList) throw new Error('cannot update people');
+      res.send(newPersonList);
+    } catch (err) {
+      res.status(500).send(err);
+    }
+  };
+
   return {
-    getAllPeople, postPerson,
+    getAllPeople, postPerson, updateAmounts,
   };
 }
