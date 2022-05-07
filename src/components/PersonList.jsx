@@ -5,7 +5,7 @@ export default function PersonList({ currentBillId }) {
   const [personList, setPersonList] = useState([]);
 
   useEffect(() => {
-    axios.get(`/person/${currentBillId}`)
+    axios.get(`/bill/${currentBillId}/people`)
       .then((res) => {
         const newPersonList = res.data.people.map(({ id, name, amount }) => (
           <li key={id}>

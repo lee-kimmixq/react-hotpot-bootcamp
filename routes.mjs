@@ -12,7 +12,7 @@ export default function routes(app) {
   app.get('/bills', BillsController.getAllBills);
   app.get('/bill/:id', BillsController.getBillFromId);
 
-  app.get('/person/:id', PeopleController.getAllPeople);
+  app.get('/bill/:id/people', PeopleController.getAllPeople);
 
   // Root route renders Webpack-generated main.html file
   app.get('/', (request, response) => {
