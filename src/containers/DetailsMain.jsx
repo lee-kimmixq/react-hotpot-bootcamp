@@ -9,7 +9,7 @@ export default function DetailsMain({ currentBillId, setCurrentBillId }) {
   const [items, setItems] = useState([]);
   const [personList, setPersonList] = useState([]);
 
-  const { name } = currentBill;
+  const { name, total } = currentBill;
 
   useEffect(() => {
     axios.get(`/bill/${currentBillId}`)
@@ -39,6 +39,12 @@ export default function DetailsMain({ currentBillId, setCurrentBillId }) {
       <h1>{name}</h1>
       <DetailsFormContainer currentBillId={currentBillId} items={items} setItems={setItems} setPersonList={setPersonList} />
       <DetailsBillContainer items={items} setItems={setItems} personList={personList} />
+      <h2>
+        Total:
+        {' '}
+        {total}
+      </h2>
+      <div className="row"><button type="button" className="btn btn-danger">Save Bill</button></div>
     </div>
   );
 }
